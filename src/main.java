@@ -3,6 +3,7 @@ public class main {
 import Clase.Estudiante;
 import EstadosClase.CursoLleno;
 import EstadosClase.CursoMinimo;
+import prerequisito.prerequisito;
 
     public class main {
         public static void main(String[] args) {
@@ -22,14 +23,14 @@ import EstadosClase.CursoMinimo;
             String[] materiasMaría = {"Geometría"};
             Estudiante maria = new Estudiante("María", materiasMaría, 1.8);
 
-            //  Matricular en curso (David)
+            //  Matricular en curso (Mp)
             System.out.println("Matriculando estudiantes ");
             try {
                 matematicas.matricularEstudiante(juan);
                 matematicas.matricularEstudiante(maria);
                 System.out.println("Estudiantes matriculados exitosamente");
                 System.out.println("Cupos disponibles: " + matematicas.getCuposDisponibles());
-            } catch (CursoLlenoException e) {
+            } catch (CursoLleno e) {
                 System.out.println("Error: " + e.getMessage());
             }
             System.out.println();
@@ -43,7 +44,7 @@ import EstadosClase.CursoMinimo;
             }
             System.out.println();
 
-            //  Verificar notas (David)
+            //  Verificar notas (Susana)
             System.out.println(" Verificando notas ");
             juan.verificarNota();
             maria.verificarNota();
