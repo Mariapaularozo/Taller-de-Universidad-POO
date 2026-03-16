@@ -7,13 +7,13 @@ import Personas_David_Botero.Estudiante;
 public class Main {
     public static void main(String[] args) {
 
-        // === CURSO CREADO ===
-        System.out.println("=== CURSO CREADO ===");
+         //CURSO (mp)
+        System.out.println(" CURSO CREADO ");
         Curso matematicas = new Curso("MAT01", "Matemáticas");
         System.out.println(matematicas);
 
-        // === MATRICULANDO ESTUDIANTES ===
-        System.out.println("\n=== MATRICULANDO ESTUDIANTES ===");
+        // Matricula (mp)
+        System.out.println(" \n MATRICULA ESTUDIANTES");
         Estudiante juan = new Estudiante(1, "Juan", 20);
         Estudiante maria = new Estudiante(2, "María", 19);
 
@@ -26,12 +26,9 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // === PREREQUISITOS ===
-        System.out.println("\n=== PREREQUISITOS ===");
-        // === PREREQUISITOS ===
-        System.out.println("\n=== PREREQUISITOS ===");
-
-// Usamos el Estudiante de Susana para prerequisitos
+        //  PREREQUISITOS (susi)
+        System.out.println(" \n PREREQUISITOS ");
+        // Usamos otro Estudiante para prerequisitos
         pre_requisitos.Estudiante Sofia = new pre_requisitos.Estudiante(
                 "Sofia", new String[]{"Geometría", "Cálculo Diferencial"}, 4.5
         );
@@ -41,16 +38,16 @@ public class Main {
             System.out.println(Sofia.getNombre() + " NO cumple prerequisitos");
         }
 
-// === VERIFICANDO NOTAS ===
-        System.out.println("\n=== VERIFICANDO NOTAS ===");
+// NOTAS (susi)
+        System.out.println(" \n VERIFICANDO NOTAS ");
         Sofia.verificarNota();
         pre_requisitos.Estudiante pedro = new pre_requisitos.Estudiante(
                 "Pedro", new String[]{"Geometría"}, 1.5
         );
         pedro.verificarNota();
 
-        // === APERTURA DEL CURSO (min 5 estudiantes) ===
-        System.out.println("\n=== APERTURA DEL CURSO (minimo 5 estudiantes) ===");
+        // APERTURA DEL CURSO (min 5 estudiantes) (mp)
+        System.out.println(" APERTURA DEL CURSO (minimo 5 estudiantes)");
         try {
             matematicas.verificarApertura();
             System.out.println("El curso puede abrirse!");
@@ -58,8 +55,8 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // === SOBRECUPO (max 10 estudiantes) ===
-        System.out.println("\n=== INTENTANDO SOBRECUPO ===");
+        //  SOBRECUPO (max 10 estudiantes) (mp)
+        System.out.println(" \n INTENTANDO SOBRECUPO");
         try {
             for (int i = 3; i <= 12; i++) {
                 Estudiante extra = new Estudiante(i, "Estudiante" + i, 18);
@@ -70,8 +67,8 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // === PROFESORES ===
-        System.out.println("\n=== PROFESORES ===");
+        // PROFESORES (David)
+        System.out.println("\n PROFESORES ");
         Profesor profe1 = new Profesor(100, "Andrea Mesa", 38, "Matemáticas");
         System.out.println(profe1);
     }
