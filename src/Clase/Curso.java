@@ -3,8 +3,9 @@ package Clase;
 import EstadosClase.CursoLleno;
 import EstadosClase.CursoMinimo;
 import Personas_David_Botero.Estudiante;
+import Interfaces.matriculable;
 
-public class Curso {
+public class Curso implements matriculable {
         private String nombre;
         private String codigo;
         private String prerequisito;
