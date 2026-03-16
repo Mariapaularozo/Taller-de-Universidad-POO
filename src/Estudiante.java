@@ -1,4 +1,6 @@
-Package pre_requisitos;
+package pre_requisitos;
+import Clase.Curso;
+
 public class Estudiante {
     private String nombre;
     private String[] materiasAprobadas;
