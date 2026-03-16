@@ -4,7 +4,7 @@ public class Persona {
     private int id;
     private String nombre;
     private int edad;
-    }
+    
 
     public Persona(int id, String nombre, int edad) { // Constructor público para crear personas desde otras clases
 
