@@ -1,4 +1,5 @@
-class Profesor extends Persona { //Hereda de Persona
+package Personas_David_Botero;
+public class Profesor extends Persona { //Hereda de Persona
 
     private String materia;
 
@@ -9,6 +10,11 @@ class Profesor extends Persona { //Hereda de Persona
         setEdad(edad);
 
         this.materia = materia;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor{nombre='" + getNombre() + "', materia='" + materia + "'}";
     }
 
 }

@@ -1,70 +1,78 @@
-public class main {
-    import Clase.Curso;
-import Clase.Estudiante;
+import Clase.Curso;
 import EstadosClase.CursoLleno;
 import EstadosClase.CursoMinimo;
-import prerequisito.prerequisito;
+import Personas_David_Botero.Profesor;
+import Personas_David_Botero.Estudiante;
 
-    public class main {
-        public static void main(String[] args) {
+public class Main {
+    public static void main(String[] args) {
 
-            //  Crear cursos  Mp)
-            Curso matematicas = new Curso("MAT01", "Matemáticas");
-            Curso calculo = new Curso("CAL01", "Cálculo Integral");
-            System.out.println("Cursos creados:");
-            System.out.println(matematicas);
-            System.out.println(calculo);
-            System.out.println();
+        // === CURSO CREADO ===
+        System.out.println("=== CURSO CREADO ===");
+        Curso matematicas = new Curso("MAT01", "Matemáticas");
+        System.out.println(matematicas);
 
-            //  Crear estudiantes (Susana)
-            String[] materiasJuan = {"Geometría", "Cálculo Diferencial"};
-            Estudiante juan = new Estudiante("Juan", materiasJuan, 3.5);
+        // === MATRICULANDO ESTUDIANTES ===
+        System.out.println("\n=== MATRICULANDO ESTUDIANTES ===");
+        Estudiante juan = new Estudiante(1, "Juan", 20);
+        Estudiante maria = new Estudiante(2, "María", 19);
 
-            String[] materiasMaría = {"Geometría"};
-            Estudiante maria = new Estudiante("María", materiasMaría, 1.8);
-
-            //  Matricular en curso (Mp)
-            System.out.println("Matriculando estudiantes ");
-            try {
-                matematicas.matricularEstudiante(juan);
-                matematicas.matricularEstudiante(maria);
-                System.out.println("Estudiantes matriculados exitosamente");
-                System.out.println("Cupos disponibles: " + matematicas.getCuposDisponibles());
-            } catch (CursoLleno e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-            System.out.println();
-
-            // Verificar prerequisitos (Susana)
-            System.out.println(" Verificando prerequisitos ");
-            if (juan.puedeInscribirse(calculo)) {
-                System.out.println(juan.getNombre() + " puede inscribirse en Cálculo");
-            } else {
-                System.out.println(juan.getNombre() + " no cumple prerequisitos");
-            }
-            System.out.println();
-
-            //  Verificar notas (Susana)
-            System.out.println(" Verificando notas ");
-            juan.verificarNota();
-            maria.verificarNota();
-            System.out.println();
-
-            // Verificar apertura del curso (Mp)
-            System.out.println("Verificando apertura del curso ");
-            try {
-                matematicas.verificarApertura(); // tiene 2, necesita mínimo 5
-            } catch (CursoSinMinimoException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-            System.out.println();
-
-            // Profesores (David )
-            System.out.println(" Profesores ");
-            Profesor profe1 = new Profesor(100, "Andrea Mesa", 38, "Matemáticas");
-            Profesor profe2 = new Profesor(101, "Juan Sebastián", 40, "Cálculo");
-            System.out.println(profe1);
-            System.out.println(profe2);
+        try {
+            matematicas.matricularEstudiante(juan);
+            matematicas.matricularEstudiante(maria);
+            System.out.println("Matricula exitosa!");
+            System.out.println("Cupos disponibles: " + matematicas.getCuposDisponibles());
+        } catch (CursoLleno e) {
+            System.out.println("Error: " + e.getMessage());
         }
+
+        // === PREREQUISITOS ===
+        System.out.println("\n=== PREREQUISITOS ===");
+        // === PREREQUISITOS ===
+        System.out.println("\n=== PREREQUISITOS ===");
+
+// Usamos el Estudiante de Susana para prerequisitos
+        pre_requisitos.Estudiante Sofia = new pre_requisitos.Estudiante(
+                "Sofia", new String[]{"Geometría", "Cálculo Diferencial"}, 4.5
+        );
+        if (Sofia.puedeInscribirse(matematicas)) {
+            System.out.println(Sofia.getNombre() + " SI puede inscribirse");
+        } else {
+            System.out.println(Sofia.getNombre() + " NO cumple prerequisitos");
+        }
+
+// === VERIFICANDO NOTAS ===
+        System.out.println("\n=== VERIFICANDO NOTAS ===");
+        Sofia.verificarNota();
+        pre_requisitos.Estudiante pedro = new pre_requisitos.Estudiante(
+                "Pedro", new String[]{"Geometría"}, 1.5
+        );
+        pedro.verificarNota();
+
+        // === APERTURA DEL CURSO (min 5 estudiantes) ===
+        System.out.println("\n=== APERTURA DEL CURSO (minimo 5 estudiantes) ===");
+        try {
+            matematicas.verificarApertura();
+            System.out.println("El curso puede abrirse!");
+        } catch (CursoMinimo e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // === SOBRECUPO (max 10 estudiantes) ===
+        System.out.println("\n=== INTENTANDO SOBRECUPO ===");
+        try {
+            for (int i = 3; i <= 12; i++) {
+                Estudiante extra = new Estudiante(i, "Estudiante" + i, 18);
+                matematicas.matricularEstudiante(extra);
+                System.out.println("Matriculado estudiante " + i);
+            }
+        } catch (CursoLleno e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // === PROFESORES ===
+        System.out.println("\n=== PROFESORES ===");
+        Profesor profe1 = new Profesor(100, "Andrea Mesa", 38, "Matemáticas");
+        System.out.println(profe1);
     }
 }

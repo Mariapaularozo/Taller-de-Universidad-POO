@@ -2,11 +2,12 @@ package Clase;
 
 import EstadosClase.CursoLleno;
 import EstadosClase.CursoMinimo;
+import Personas_David_Botero.Estudiante;
 
 public class Curso {
-    public String getPrerequisito() { return prerequisito; }
         private String nombre;
         private String codigo;
+        private String prerequisito;
         private static final int CAPACIDAD_MAXIMA = 10;
         private static final int MINIMO_ESTUDIANTES = 5;
 
@@ -19,6 +20,8 @@ public class Curso {
             this.estudiantes = new Estudiante[CAPACIDAD_MAXIMA];
             this.totalEstudiantes = 0;
         }
+
+    public String getNombre() { return nombre; }
 
         public void matricularEstudiante(Estudiante estudiante) throws CursoLleno {
             if (totalEstudiantes >= CAPACIDAD_MAXIMA) {
@@ -60,5 +63,7 @@ public class Curso {
         public int hashCode() {
             return codigo.hashCode();
         }
-    }
+
+    public String getPrerequisito() { return prerequisito;}
 }
+
