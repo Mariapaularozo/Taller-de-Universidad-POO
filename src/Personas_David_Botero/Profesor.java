@@ -1,4 +1,5 @@
-class Profesor extends Persona { //Hereda de Persona
+package Personas_David_Botero;
+public class Profesor extends Persona { //Hereda de Persona
 
     private String materia;
 
