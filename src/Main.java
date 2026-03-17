@@ -1,29 +1,81 @@
-import java.util.Scanner;//Librería para el scanner
+import Clase.Curso;
+import EstadosClase.CursoLleno;
+import EstadosClase.CursoMinimo;
+import Personas_David_Botero.Profesor;
+import Personas_David_Botero.Estudiante;
 
 public class Main {
-
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        //Clase utilitaria (mp)
+        System.out.println(" VALIDACION DE DATOS ");
+        System.out.println("ID 1 valido: " + Utilidades.idValido(1));
+        System.out.println("ID -5 valido: " + Utilidades.idValido(-5));
+        System.out.println("Nombre 'Juan' valido: " + Utilidades.nombreValido("Juan"));
+        System.out.println("Nombre vacio valido: " + Utilidades.nombreValido(""));
 
-        Persona[] personas = new Persona[29];
-        // Polimorfismo. El arreglo es de tipo Persona, pero puede almacenar objetos de sus clases hijas como Estudiante o Profesor.
+        // Curso (mp)
+        System.out.println("\n CURSO");
+        Curso matematicas = new Curso("MAT01", "Matematicas");
+        System.out.println(matematicas);
 
-        for (int i = 0; i < 25; i++) { //Se ingresan los nombres de los estudiantes al arreglo
+        // matricula (susana, david, mp)
+        System.out.println("\n MATRICULA");
+        Estudiante juan = new Estudiante(1, "Juan", 20);
+        Estudiante maria = new Estudiante(2, "Maria", 19);
 
-            System.out.print("Ingrese el nombre del estudiante " + (i + 1) + ": ");
-            String nombre = sc.nextLine();
-
-            int id = i + 1;
-            int edad = 18;
-
-            personas[i] = new Estudiante(id, nombre, edad);
+        try {
+            matematicas.matricularEstudiante(juan);
+            matematicas.matricularEstudiante(maria);
+            System.out.println("Matricula exitosa!");
+            System.out.println("Cupos disponibles: " + matematicas.getCuposDisponibles());
+        } catch (CursoLleno e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
-        personas[25] = new Profesor(100, "Andrea Mesa", 38, "Matemáticas Discretas");
-        personas[26] = new Profesor(101, "Juan Sebastian", 40, "Arquitectura de Hardware");
-        personas[27] = new Profesor(102, "Francisco Jaramillo", 45, "Calculo Diferencial");
-        personas[28] = new Profesor(103, "Andres Sarrazola", 44, "Calculo Integral");
+        // Pre-requisitos (susana)
+        System.out.println("\n PRE-REQUISITOS");
+        pre_requisitos.Estudiante susana = new pre_requisitos.Estudiante(
+                "Susana", new String[]{"Geometria", "Calculo Diferencial"}, 4.5
+        );
+        if (susana.puedeInscribirse(matematicas)) {
+            System.out.println(susana.getNombre() + " SI puede inscribirse");
+        } else {
+            System.out.println(susana.getNombre() + " NO cumple prerequisitos");
+        }
 
+        //Notas (susana)
+        System.out.println("\n VERIFICAR NOTAS");
+        susana.verificarNota();
+        pre_requisitos.Estudiante pedro = new pre_requisitos.Estudiante(
+                "Pedro", new String[]{"Geometria"}, 1.5
+        );
+        pedro.verificarNota();
+
+        // MIN 5 estudiantes (mp)
+        System.out.println("\n ABRIR CURSO");
+        try {
+            matematicas.verificarApertura();
+            System.out.println("El curso puede abrirse!");
+        } catch (CursoMinimo e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // MAX 10 estudiantes)
+        System.out.println("\n SOBRECUPO");
+        try {
+            for (int i = 3; i <= 12; i++) {
+                Estudiante extra = new Estudiante(i, "Estudiante" + i, 18);
+                matematicas.matricularEstudiante(extra);
+                System.out.println("Matriculado estudiante " + i);
+            }
+        } catch (CursoLleno e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Profesores (David)
+        System.out.println("\n Profesores");
+        Profesor profe1 = new Profesor(100, "Andrea Mesa", 38, "Matematicas");
+        System.out.println(profe1);
     }
 }
