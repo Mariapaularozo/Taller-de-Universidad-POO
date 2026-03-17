@@ -12,6 +12,13 @@ public class Main {
         Curso matematicas = new Curso("MAT01", "Matemáticas");
         System.out.println(matematicas);
 
+        // Clase Utilitaria
+        System.out.println(" \n VALIDACION DE DATOS");
+        System.out.println("ID 1 valido: " + Utilidades.idValido(1));
+        System.out.println("ID -5 valido: " + Utilidades.idValido(-5));
+        System.out.println("Nombre 'Juan' valido: " + Utilidades.nombreValido("Juan"));
+        System.out.println("Nombre vacio valido: " + Utilidades.nombreValido(""));
+
         // Matricula (mp)
         System.out.println(" \n MATRICULA ESTUDIANTES");
         Estudiante juan = new Estudiante(1, "Juan", 20);
@@ -26,8 +33,9 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        //  PREREQUISITOS (susi)
+        //  Pre-requisitos (susi)
         System.out.println(" \n PREREQUISITOS ");
+
         // Usamos otro Estudiante para prerequisitos
         pre_requisitos.Estudiante Sofia = new pre_requisitos.Estudiante(
                 "Sofia", new String[]{"Geometría", "Cálculo Diferencial"}, 4.5
@@ -38,7 +46,7 @@ public class Main {
             System.out.println(Sofia.getNombre() + " NO cumple prerequisitos");
         }
 
-// NOTAS (susi)
+// Notas (susi)
         System.out.println(" \n VERIFICANDO NOTAS ");
         Sofia.verificarNota();
         pre_requisitos.Estudiante pedro = new pre_requisitos.Estudiante(
@@ -46,8 +54,8 @@ public class Main {
         );
         pedro.verificarNota();
 
-        // APERTURA DEL CURSO (min 5 estudiantes) (mp)
-        System.out.println(" APERTURA DEL CURSO (minimo 5 estudiantes)");
+        // Apertura del curso (min 5 estudiantes) (mp)
+        System.out.println(" \n APERTURA DEL CURSO (minimo 5 estudiantes)");
         try {
             matematicas.verificarApertura();
             System.out.println("El curso puede abrirse!");
@@ -55,7 +63,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        //  SOBRECUPO (max 10 estudiantes) (mp)
+        //  Sobrecupo (max 10 estudiantes) (mp)
         System.out.println(" \n INTENTANDO SOBRECUPO");
         try {
             for (int i = 3; i <= 12; i++) {
@@ -67,7 +75,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // PROFESORES (David)
+        // Profesores (David)
         System.out.println("\n PROFESORES ");
         Profesor profe1 = new Profesor(100, "Andrea Mesa", 38, "Matemáticas");
         System.out.println(profe1);
